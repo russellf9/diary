@@ -24,6 +24,10 @@ angular.module('myApp.routes', ['ngRoute', 'simpleLogin'])
       templateUrl: 'partials/login.html',
       controller: 'LoginCtrl'
     },
+    '/contacts' : {
+	 templateUrl: 'partials/contacts.html',
+	controller: 'ContactsCtrl'
+	},
     '/account': {
       templateUrl: 'partials/account.html',
       controller: 'AccountCtrl',

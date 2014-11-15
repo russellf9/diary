@@ -1,0 +1,18 @@
+<h2>Contacts</h2>
+
+<form>
+  <input placeholder="first name" ng-model="person.firstName">
+  
+  <br>
+  <input placeholder="last name" ng-model="person.lastName">
+	
+ <button type="submit" ng-click="addPerson(person);person = null;">add</button>
+</form>
+
+
+
+<br>
+
+<ul id="contacts" ng-show="contacts.length">
+    <li ng-repeat="contact in contacts">{{contact.firstName}} {{contact.lastName}}</li>
+</ul>

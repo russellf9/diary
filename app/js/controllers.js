@@ -64,6 +64,18 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
     }
   }])
 
+ .controller('ContactsCtrl', ['$scope', 'contactsList', function($scope, contactsList) {
+    $scope.contacts = contactsList;
+    $scope.addPerson = function(person) {
+      if( person ) {
+		console.log('add person: ', person)
+       $scope.contacts.$add({'firstName': person.firstName, 'lastName' : person.lastName});
+      }
+    };
+  }])
+
+
+
   .controller('AccountCtrl', ['$scope', 'simpleLogin', 'fbutil', 'user', '$location',
     function($scope, simpleLogin, fbutil, user, $location) {
       // create a 3-way binding with the user profile object in Firebase
