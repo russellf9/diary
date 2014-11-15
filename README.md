@@ -1,3 +1,4 @@
+
 # angularfire-seed — the seed for Angular+Firebase apps
 
 This derivative of [angular-seed](https://github.com/angular/angularfire-seed) is an application 
@@ -302,3 +303,6 @@ For more information on AngularJS please check out http://angularjs.org/
 [karma]: http://karma-runner.github.io
 [travis]: https://travis-ci.org/
 [http-server]: https://github.com/nodeapps/http-server
+=======
+An application to test deep data mainipulation in Firebase.
+
