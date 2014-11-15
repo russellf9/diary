@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
+var myAppControllers = angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
   .controller('HomeCtrl', ['$scope', 'fbutil', 'user', 'FBURL', function($scope, fbutil, user, FBURL) {
     $scope.syncedValue = fbutil.syncObject('syncedValue');
     $scope.user = user;
@@ -63,17 +63,6 @@ angular.module('myApp.controllers', ['firebase.utils', 'simpleLogin'])
       return angular.isObject(err) && err.code? err.code : err + '';
     }
   }])
-
- .controller('ContactsCtrl', ['$scope', 'contactsList', function($scope, contactsList) {
-    $scope.contacts = contactsList;
-    $scope.addPerson = function(person) {
-      if( person ) {
-		console.log('add person: ', person)
-       $scope.contacts.$add({'firstName': person.firstName, 'lastName' : person.lastName});
-      }
-    };
-  }])
-
 
 
   .controller('AccountCtrl', ['$scope', 'simpleLogin', 'fbutil', 'user', '$location',
