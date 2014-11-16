@@ -63,14 +63,43 @@ myAppControllers.controller('ContactsCtrl', ['$scope', 'contactsList', 'fbutil',
 		
 		// the path for all the contacts
 		var ref = fbutil.ref('contacts');	
-		ref.once('value', function(nameSnapshot) {
-			
-		    var contacts = nameSnapshot.val();
-		    var name = nameSnapshot.name();
+		ref.once('value', function(snapshot) {
+				
+		    var contacts = snapshot.val();
+		    var name = snapshot.name();
 		
-		    angular.forEach(contacts, function(contact){
-                console.log('contact: ', contact);
+		    snapshot.forEach(function(contact){
+                //console.log('contact | key: ', contact.key()); // will not have key
+				 console.log('21:56 -> child: ', contact);
+              		
+	            console.log('21:56 -> child path: ', contact.path);
+			  
+
+				console.log('contact | value: ', contact.val());
+				
+				var ref = contact.val().contacts.id;
+				
+				console.log('ref: ', ref);
 			})
+		
+		  // see if we can modify outside the $scope
+			// THIS IS WHAT I WAS LOOKING FOR - SIMPLE!
+		   var list = contactsList;
+			
+			angular.forEach(list, function(person){
+				// like this we get the $id property!			
+				var ref = fbutil.ref(person.$id);
+				
+				//console.log('path: ',ref.path.toString()); // like `/-JapL5dyvURrthbHDwX5`
+				
+				//var addPath = fbutil.ref('contacts' + ref.path.toString());
+				
+				var addPath = fbutil.ref('contacts/' + person.$id);
+							
+				// successfully added data to each node!
+				addPath.child('new').update({'name':'grace'});
+				
+			});
 		});
 		
 		// look at the array now...
