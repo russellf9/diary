@@ -1,17 +1,17 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [
-    'myApp.config',
-    'myApp.controllers',
-    'myApp.decorators',
-    'myApp.directives',
-    'myApp.filters',
-    'myApp.routes',
-    'myApp.services'
-  ])
+var myApp = angular.module('myApp', [
+	'myApp.config',
+	'myApp.controllers',
+	'myApp.decorators',
+	'myApp.directives',
+	'myApp.filters',
+	'myApp.routes',
+	'myApp.services'
+])
 
-  .run(['simpleLogin', function(simpleLogin) {
-    console.log('run'); //debug
-    simpleLogin.getUser();
-  }])
+	.run(['simpleLogin', function (simpleLogin) {
+		console.log('run'); //debug
+		simpleLogin.getUser();
+	}]);
