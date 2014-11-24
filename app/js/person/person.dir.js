@@ -2,11 +2,21 @@
 
 angular.module('myApp.directives');
 
-myApp.directives.directive('person', [function () {
+myApp.directive('person', [function () {
 	return {
 		restrict: 'EA',
-		scope: {},
+		scope: {
+			thePerson: '='
+		},
 		controller: function ($scope, $filter) {
+
+			console.log('person');
+
+			$scope.remove = function (person) {
+				console.log('remove: ', person);
+
+				console.log('the: ',$scope.thePerson.firstName)
+			};
 		},
 		link: function (scope, element, attributes) {
 		},

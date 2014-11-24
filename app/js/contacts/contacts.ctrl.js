@@ -3,8 +3,10 @@
 
 myAppControllers.controller('ContactsCtrl', ['$scope', 'contactsList', 'fbutil', function ($scope, contactsList, fbutil) {
 
-	console.log('ContactsCtrl')
+	console.log('ContactsCtrl');
 	$scope.contacts = contactsList;
+
+
 	$scope.addPerson = function (person) {
 		if (person) {
 			console.log('Ok add person: ', person)

@@ -13,10 +13,11 @@
 
 <br>
 
-<ul id="contacts" ng-show="contacts.length">
-    <person ng-repeat="contact in contacts">
-	</person>
-</ul>
+<div id="contacts" ng-show="contacts.length">
+    <ul ng-repeat="contact in contacts" >
+        <person the-person="contact"></person>
+	</ul>
+</div>
 
 <div style="margin-bottom: 20px">
 	Iterate data
