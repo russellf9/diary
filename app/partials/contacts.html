@@ -15,9 +15,11 @@
 
 <div id="contacts" ng-show="contacts.length">
     <ul ng-repeat="contact in contacts" >
-        <person the-person="contact"></person>
+        <li>{{contact.firstName}}</li>
 	</ul>
 </div>
+
+<!--<person the-person="contact"></person>-->
 
 <div style="margin-bottom: 20px">
 	Iterate data

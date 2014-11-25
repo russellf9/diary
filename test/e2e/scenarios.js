@@ -5,6 +5,40 @@ describe('my app', function() {
 
   browser.get('index.html');
 
+  describe('contacts', function () {
+
+    beforeEach(function () {
+      browser.get('index.html#/contacts');
+    });
+
+    // access angular repeat list data
+    //(must match repeat stmt in the html)
+    //element.all(by.repeater('person in home.results'));
+    it('should add a contact when add button is clicked', function(){
+      var list = element.all(by.repeater('contact in contacts'));
+
+      var memberCount;
+
+      element.all(by.repeater('contact in contacts')).count().then(function(value) {
+        memberCount = value;
+
+        console.log('A value: ', value);
+      });
+
+      element.all(by.repeater('ul li')).count().then(function(value) {
+        memberCount = value;
+
+        console.log('B value: ', value);
+      });
+
+      browser.pause;
+
+
+
+    });
+
+  });
+
   // it('should automatically redirect to /home when location hash/fragment is empty', function() {
   //     expect(browser.getLocationAbsUrl()).toMatch("/home");
   //   });
