@@ -5,16 +5,30 @@ describe('my app', function() {
 
   browser.get('index.html');
 
-  describe('contacts', function () {
+  describe('the contacts page', function () {
+
+    var contactsPage = require('./contact_page.js');
 
     beforeEach(function () {
-      browser.get('index.html#/contacts');
+      contactsPage.navigate();
+    });
+
+    it('should be able to create a new contact', function(){
+
+      contactsPage.firstNameSendKeys('Russell');
+
+      contactsPage.lastNameSendKeys('Wenban');
+
+      contactsPage.submit();
+
+      browser.sleep(2000);
+
     });
 
     // access angular repeat list data
     //(must match repeat stmt in the html)
     //element.all(by.repeater('person in home.results'));
-    it('should add a contact when add button is clicked', function(){
+    xit('should add a contact when add button is clicked', function(){
       var list = element.all(by.repeater('contact in contacts'));
 
       var memberCount;
