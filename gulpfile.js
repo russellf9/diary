@@ -1,6 +1,9 @@
 // Include gulp
 var gulp = require('gulp');
 
+// Define node modules
+var del = require('del');
+
 // Include Our Plugins
 var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
@@ -9,6 +12,7 @@ var usemin = require('gulp-usemin');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var minifyCss = require('gulp-minify-css');
+var minifyHTML = require('gulp-minify-html');
 
 // Lint Task
 gulp.task('lint', function() {
@@ -36,6 +40,7 @@ gulp.task('scripts', function() {
 
 // Concatenate $ Minify from the template file
 gulp.task('deploy', function() {
+	var opts = {comments:true,spare:true};
 	return gulp.src('app/**/*.html')
 		.pipe(usemin({
 			assetDir : 'app',
@@ -44,6 +49,15 @@ gulp.task('deploy', function() {
 		}))
 		.pipe(gulp.dest('public'));
 });
+
+gulp.task('clean:public', function (cb) {
+	del([
+		'public/**',
+		// we don't want to clean this file though so we negate the pattern
+		'!dist/mobile/deploy.json'
+	], cb);
+});
+
 
 // Watch Files For Changes
 gulp.task('watch', function() {
