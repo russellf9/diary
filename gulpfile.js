@@ -44,6 +44,7 @@ gulp.task('deploy', function() {
 	return gulp.src('app/**/*.html')
 		.pipe(usemin({
 			assetDir : 'app',
+			html:[minifyHTML(opts)],
 			css: [minifyCss(), 'concat'],
 			js: [uglify(), 'concat']
 		}))
@@ -58,6 +59,8 @@ gulp.task('clean:public', function (cb) {
 	], cb);
 });
 
+// Clean & Deploy
+gulp.task('build', ['clean:public', 'deploy']);
 
 // Watch Files For Changes
 gulp.task('watch', function() {
