@@ -1,3 +1,4 @@
+'use strict';
 /**
  * Wraps ng-cloak so that, instead of simply waiting for Angular to compile, it waits until
  * simpleLogin resolves with the remote Firebase services.

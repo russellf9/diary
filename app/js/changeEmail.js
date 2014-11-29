@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('changeEmail', ['firebase.utils'])
 	.factory('changeEmail', ['fbutil', '$q', function (fbutil, $q) {
 		return function (password, oldEmail, newEmail, simpleLogin) {

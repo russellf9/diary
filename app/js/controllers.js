@@ -92,7 +92,7 @@ var myAppControllers = angular.module('myApp.controllers', ['firebase.utils', 's
 							$scope.msg = 'Password changed';
 						}, function (err) {
 							$scope.err = err;
-						})
+						});
 				}
 			};
 
