@@ -5,8 +5,10 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
+var usemin = require('gulp-usemin');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var minifyCss = require('gulp-minify-css');
 
 // Lint Task
 gulp.task('lint', function() {
@@ -30,6 +32,17 @@ gulp.task('scripts', function() {
 		.pipe(rename('all.min.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('dist'));
+});
+
+// Concatenate $ Minify from the template file
+gulp.task('deploy', function() {
+	return gulp.src('app/**/*.html')
+		.pipe(usemin({
+			assetDir : 'app',
+			css: [minifyCss(), 'concat'],
+			js: [uglify(), 'concat']
+		}))
+		.pipe(gulp.dest('public'));
 });
 
 // Watch Files For Changes
