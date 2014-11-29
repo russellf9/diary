@@ -28,9 +28,6 @@ var ContactPage = function() {
 	this.submit = function() {
 		this.addButton.click();
 	};
-
-
 };
-
 
 module.exports = new ContactPage();
